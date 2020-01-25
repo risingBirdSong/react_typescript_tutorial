@@ -1,3 +1,7 @@
+
+following along to https://www.youtube.com/watch?v=DLX62G4lc44 react tutorial
+But trying to do it all in TypeScript for the thrill of it. 
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
