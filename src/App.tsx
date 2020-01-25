@@ -5,13 +5,8 @@ import "bootstrap/dist/css/bootstrap.css";
 import { MyDate } from "./components/date";
 import { Looper } from "./components/looping";
 import { MyList, MyNameAndVacations } from "./components/lists";
-function MyHeader() {
-  return (
-    <div>
-      <h1 className="text-primary">hello header</h1>
-    </div>
-  );
-}
+import { MyHeader, MyHeaderI } from "./components/Header";
+import { Todo, TodoItem } from "./components/TodoList";
 
 interface myNameAndVacationsI {
   myName: string;
@@ -41,10 +36,20 @@ const passed: myNameAndVacationsI = {
   MyVacations: vacations
 };
 
+const passTheHeader: MyHeaderI = {
+  name: "testing person",
+  title: "Test title",
+  areaCode: 98123,
+  links: ["home", "contact", "fan page", "fave teams of sport"]
+};
+
+let myTodos: any[] = [];
+
 const App: React.FC = () => {
   return (
     <div>
-      <MyNameAndVacations props={passed} />
+      <MyHeader props={passTheHeader} />
+      <Todo />
     </div>
   );
 };
