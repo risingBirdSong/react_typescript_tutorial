@@ -8,6 +8,7 @@ import { MyList, MyNameAndVacations } from "./components/lists";
 import { MyHeader, MyHeaderI } from "./components/Header";
 import { Todo, TodoItem } from "./components/TodoList";
 import { Kitten, KittenI } from "./components/KittyComponent";
+import { Joke } from "./components/jokes";
 
 interface myNameAndVacationsI {
   myName: string;
@@ -64,23 +65,32 @@ const App: React.FC = () => {
   return (
     <div>
       <MyHeader props={passTheHeader} />
-      <Kitten
-        props={{
-          imgLink: "http://placekitten.com/200/300",
-          lives: 6,
-          name: "plutarch the younger"
+      <Joke
+        inputs={{
+          question: "Why do most married men die before their wives?",
+          punchline: "because they want to"
         }}
       />
-      {/* <Kitten
-        name="wilson"
-        imgLink="http://placekitten.com/200/300"
-        lives={9}
+      <Joke
+        inputs={{
+          question: "Question: What do diapers and Politicians have in common?",
+          punchline: "they both need changing regularly, for the same reason"
+        }}
       />
-      <Kitten
-        name="marley"
-        imgLink="http://placekitten.com/200/300"
-        lives={6}
-      /> */}
+      <Joke
+        inputs={{
+          question:
+            "Question: What did the cowboy say went he went into the car showroom in Germany?",
+          punchline: "Audi"
+        }}
+      />
+
+      <Joke
+        inputs={{
+          punchline:
+            "When I was a boy, I had a disease that required me to eat dirt three times a day in order to survive... It's a good thing my older brother told me about it."
+        }}
+      />
     </div>
   );
 };
