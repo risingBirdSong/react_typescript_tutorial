@@ -7,6 +7,7 @@ import { Looper } from "./components/looping";
 import { MyList, MyNameAndVacations } from "./components/lists";
 import { MyHeader, MyHeaderI } from "./components/Header";
 import { Todo, TodoItem } from "./components/TodoList";
+import { Kitten, KittenI } from "./components/KittyComponent";
 
 interface myNameAndVacationsI {
   myName: string;
@@ -45,11 +46,41 @@ const passTheHeader: MyHeaderI = {
 
 let myTodos: any[] = [];
 
+type CardProps = {
+  title: string;
+  paragraph: string;
+};
+
+export const Card = ({ title, paragraph }: CardProps) => {
+  return (
+    <aside>
+      <h2>{title}</h2>
+      <p>{paragraph}</p>
+    </aside>
+  );
+};
+
 const App: React.FC = () => {
   return (
     <div>
       <MyHeader props={passTheHeader} />
-      <Todo />
+      <Kitten
+        props={{
+          imgLink: "http://placekitten.com/200/300",
+          lives: 6,
+          name: "plutarch the younger"
+        }}
+      />
+      {/* <Kitten
+        name="wilson"
+        imgLink="http://placekitten.com/200/300"
+        lives={9}
+      />
+      <Kitten
+        name="marley"
+        imgLink="http://placekitten.com/200/300"
+        lives={6}
+      /> */}
     </div>
   );
 };
