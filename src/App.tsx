@@ -9,6 +9,18 @@ import { MyHeader, MyHeaderI } from "./components/Header";
 import { Todo, TodoItem } from "./components/TodoList";
 import { Kitten, KittenI } from "./components/KittyComponent";
 import { Joke } from "./components/jokes";
+import { randomUsers, RandomUserComponent } from "./components/random-users";
+import products from "./data/itemsdata";
+import { ProductComponent } from "./components/itemsComponent";
+import { MoreTodoComponent } from "./components/moreTodo";
+import { moreToItems } from "./components/moreTodoItems";
+import {
+  ClassTest,
+  PracticeProps,
+  StatePractice,
+  StateDebugging
+} from "./components/classComponent";
+import { User } from "./components/user";
 
 interface myNameAndVacationsI {
   myName: string;
@@ -61,38 +73,37 @@ export const Card = ({ title, paragraph }: CardProps) => {
   );
 };
 
-const App: React.FC = () => {
-  return (
-    <div>
-      <MyHeader props={passTheHeader} />
-      <Joke
-        inputs={{
-          question: "Why do most married men die before their wives?",
-          punchline: "because they want to"
-        }}
-      />
-      <Joke
-        inputs={{
-          question: "Question: What do diapers and Politicians have in common?",
-          punchline: "they both need changing regularly, for the same reason"
-        }}
-      />
-      <Joke
-        inputs={{
-          question:
-            "Question: What did the cowboy say went he went into the car showroom in Germany?",
-          punchline: "Audi"
-        }}
-      />
+console.log(products[0]);
+console.log("yea");
 
-      <Joke
-        inputs={{
-          punchline:
-            "When I was a boy, I had a disease that required me to eat dirt three times a day in order to survive... It's a good thing my older brother told me about it."
-        }}
-      />
-    </div>
-  );
-};
+class App extends React.Component<{}, { todos: any[] }> {
+  constructor() {
+    super({});
+    this.state = {
+      todos: this.mappedTodos
+    };
+  }
+
+  mappedUsers = randomUsers.map((user, idx) => {
+    return <RandomUserComponent props={user} />;
+  });
+
+  mappedProducts = products.map((product, idx) => {
+    return <ProductComponent props={product} />;
+  });
+
+  mappedTodos = moreToItems.map((todo, idx) => {
+    return <MoreTodoComponent done={todo.done} task={todo.task} />;
+  });
+
+  render() {
+    return (
+      <div>
+        <MyHeader props={passTheHeader} />
+        {this.state.todos}
+      </div>
+    );
+  }
+}
 
 export default App;
